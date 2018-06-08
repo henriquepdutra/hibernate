@@ -20,21 +20,22 @@ public class Main {
         EntityManager em = entityManagerFactory.createEntityManager();
 
         //        ////////////// Inserindo dados no banco ////////////////////////////////////////
-//                Lembrete lembrete = new Lembrete();
-//                lembrete.setTitulo("teste 3");
-//                lembrete.setDescricao("26/06/18, 23h");
-//        
-//        
-//                try {
-//                    em.getTransaction().begin();
-//                    em.persist(lembrete);
-//                    em.getTransaction().commit();
-//                } catch (Exception e) {
-//                    em.getTransaction().rollback();
-//                    System.out.println("INSERT: " + e.getMessage());
-//                } finally {
-//                    em.close();
-//                }
+                Lembrete lembrete = new Lembrete();
+                lembrete.setTitulo("teste 3");
+                lembrete.setDescricao("26/06/18, 23h");
+                LembreteDAO lembreteDAO = new LembreteDAO();
+        
+                try {
+                    lembreteDAO.update();
+                    em.getTransaction().begin();
+                    em.persist(lembrete);
+                    em.getTransaction().commit();
+                } catch (Exception e) {
+                    em.getTransaction().rollback();
+                    System.out.println("INSERT: " + e.getMessage());
+                } finally {
+                    em.close();
+                }
         // /////////////////////////////////////////////////////////////////////////////////////////
         // ///////////// Buscando todos os dados //////////////////////////////////////////////
 //        List<Lembrete> lembretes = null;
@@ -105,19 +106,19 @@ public class Main {
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////Excluindo Dados////////////////////////////////////////////////////
     
-    try{
-        Lembrete lembrete = em.find(Lembrete.class , 1L);
-        
-        em.getTransaction().begin();
-        em.remove(lembrete);
-        em.getTransaction().commit();
-    }catch(Exception e){
-        em.getTransaction().rollback();
-        System.out.println("DELETE:" + e.getMessage());
-    }finally{
-        em.close();
-    }
-    
+//    try{
+//        Lembrete lembrete = em.find(Lembrete.class , 1L);
+//        
+//        em.getTransaction().begin();
+//        em.remove(lembrete);
+//        em.getTransaction().commit();
+//    }catch(Exception e){
+//        em.getTransaction().rollback();
+//        System.out.println("DELETE:" + e.getMessage());
+//    }finally{
+//        em.close();
+//    }
+//    
     
     ////////////////////////////////////////////////////////////////////////////////////////////////
     }
